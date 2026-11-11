@@ -1,0 +1,372 @@
+
+/* =========================================
+   ESTILOS GENERALES Y FONDO ROMÁNTICO
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    cursor: default;
+    overscroll-behavior-y: contain;
+
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    /* FOTO DE MARISOL COMO FONDO */
+    background-image:
+        linear-gradient(
+            rgba(255, 105, 180, 0.18),
+            rgba(255, 182, 193, 0.18)
+        ),
+        url("images/marisol.jpg");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* =========================================
+   ZONA DONDE APARECEN LOS CORAZONES
+========================================= */
+
+#hearts-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+}
+
+/* =========================================
+   CORAZONES
+========================================= */
+
+.heart-target {
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    transition:
+        transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+        opacity 0.3s ease;
+
+    z-index: 15;
+
+    font-family: 'Dancing Script', cursive;
+    font-size: 18px;
+
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+
+/* Texto dentro del corazón */
+
+.heart-target::after {
+    content: 'Marisol';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+
+    text-shadow: 1px 1px 2px #c2185b;
+
+    pointer-events: none;
+}
+
+/* Corazón explotado */
+
+.heart-target.exploded {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* =========================================
+   ARCO
+========================================= */
+
+#bow-container {
+    position: absolute;
+
+    left: 5vw;
+    top: 50%;
+
+    transform: translateY(-50%) rotate(0rad);
+
+    width: 100px;
+    height: 200px;
+
+    z-index: 20;
+
+    transform-origin: 30% 50%;
+
+    transition: transform 0.3s ease-out;
+}
+
+#bow {
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================================
+   FLECHA
+========================================= */
+
+#arrow {
+    position: absolute;
+
+    top: 50%;
+    left: calc(5vw + 45px);
+
+    transform: translateY(-50%) rotate(0rad);
+
+    width: 100px;
+    height: 20px;
+
+    cursor: grab;
+
+    z-index: 21;
+
+    transform-origin: 0% 50%;
+
+    transition:
+        transform 0.1s ease-out,
+        left 0.5s linear,
+        top 0.5s linear,
+        opacity 0.5s;
+}
+
+#arrow.dragging {
+    cursor: grabbing;
+}
+
+/* =========================================
+   MENSAJES ROMÁNTICOS
+========================================= */
+
+#message {
+    font-family: 'Times New Roman', Times, serif;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) scale(0.8);
+
+    opacity: 0;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+    z-index: 30;
+
+    pointer-events: none;
+
+    background-color: rgba(255, 255, 255, 0.75);
+
+    backdrop-filter: blur(5px);
+
+    padding: 1rem 1.5rem;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+
+    max-width: 90vw;
+
+    color: #d63384;
+
+    font-size: clamp(18px, 4vw, 35px);
+}
+
+/* Mostrar mensaje */
+
+#message.visible {
+    opacity: 1;
+
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* =========================================
+   CONFETI
+========================================= */
+
+canvas {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+/* =========================================
+   MODAL DE INICIO
+========================================= */
+
+#start-modal {
+    transition:
+        transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.4s ease;
+}
+
+/* =========================================
+   CONTADORES
+========================================= */
+
+#counters-container {
+    z-index: 40;
+}
+
+/* =========================================
+   BOTÓN REINICIAR
+========================================= */
+
+#controls-container {
+    z-index: 40;
+}
+
+/* =========================================
+   ESCRITORIO Y PANTALLAS GRANDES
+========================================= */
+
+@media (min-width: 640px) {
+
+    .heart-target {
+        width: 80px;
+        height: 80px;
+
+        line-height: 80px;
+    }
+
+    .heart-target::after {
+        font-size: 14px;
+    }
+
+    #bow-container {
+        left: 10vw;
+    }
+
+    #arrow {
+        left: calc(10vw + 45px);
+    }
+
+    #message {
+        padding: 2rem 3rem;
+    }
+}
+
+/* =========================================
+   ADAPTACIÓN PARA TELÉFONOS
+========================================= */
+
+@media screen and (max-width: 639px) {
+
+    body {
+        background-size: cover;
+        background-position: center center;
+        background-attachment: scroll;
+    }
+
+    #bow-container {
+        left: 3vw;
+
+        width: 75px;
+        height: 150px;
+    }
+
+    #arrow {
+        left: calc(3vw + 35px);
+
+        width: 80px;
+        height: 16px;
+    }
+
+    #counters-container {
+        top: 8px;
+        right: 8px;
+
+        gap: 6px;
+    }
+
+    #counters-container > div {
+        padding: 6px;
+    }
+
+    #message {
+        width: 85%;
+        max-width: 350px;
+
+        padding: 1rem;
+
+        font-size: 22px;
+    }
+
+    #controls-container {
+        bottom: 12px;
+    }
+
+    #restart-button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    #start-modal {
+        padding: 20px;
+    }
+}
+
+/* =========================================
+   TELÉFONOS MUY PEQUEÑOS
+========================================= */
+
+@media screen and (max-width: 380px) {
+
+    #bow-container {
+        left: 2vw;
+
+        width: 65px;
+        height: 130px;
+    }
+
+    #arrow {
+        left: calc(2vw + 30px);
+
+        width: 70px;
+    }
+
+    #message {
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    #restart-button {
+        font-size: 14px;
+    }
+}

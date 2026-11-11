@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>¡Atrapa los Corazones!</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+    <!-- Modal de inicio -->
+    <div id="start-modal-overlay"
+         class="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+
+        <div id="start-modal"
+             class="bg-white/90 rounded-2xl p-6 sm:p-8 shadow-xl text-center max-w-md w-full">
+
+            <h2 class="text-3xl sm:text-4xl text-pink-500 font-['Pacifico']">
+                Un Juego Para Ti Mi Amor ❤️
+            </h2>
+
+            <p class="mt-4 text-gray-600 text-base sm:text-lg">
+                He creado este pequeño mundo solo para ti.
+                Usa tu arco para flechar los corazoncitos
+                que revolotean por la pantalla.
+            </p>
+
+            <p class="mt-2 text-gray-700 font-semibold">
+                Cada vez que aciertes, ¡descubrirás un mensajito especial!
+            </p>
+
+            <p class="mt-6 text-sm text-gray-500">
+                Arrastra el arco para apuntar y suéltalo
+                para lanzar la flecha 😉
+            </p>
+
+            <button id="start-game-button"
+                    class="mt-8 px-8 py-3 bg-pink-500 text-white font-bold rounded-full shadow-lg hover:bg-pink-600 transition-transform hover:scale-105 text-lg">
+
+                ¡Empezar la Aventura!
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Contadores -->
+    <div id="counters-container"
+         class="absolute top-2 right-2 sm:top-4 sm:right-4 flex gap-2 sm:gap-4">
+
+        <div class="text-center bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-lg shadow-md">
+            <div class="text-base sm:text-xl text-gray-600 font-semibold">
+                Flechas:
+            </div>
+
+            <div id="shot-counter"
+                 class="text-3xl sm:text-4xl text-pink-500 font-bold">
+                10
+            </div>
+        </div>
+
+        <div class="text-center bg-white/70 backdrop-blur-sm p-2 sm:p-3 rounded-lg shadow-md">
+            <div class="text-base sm:text-xl text-gray-600 font-semibold">
+                Aciertos:
+            </div>
+
+            <div id="hits-counter"
+                 class="text-3xl sm:text-4xl text-green-500 font-bold">
+                0
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Área de corazones -->
+    <div id="hearts-area"></div>
+
+    <!-- Mensajes de amor -->
+    <h1 id="message"
+        class="text-3xl sm:text-4xl md:text-5xl text-gray-700">
+    </h1>
+
+    <!-- Arco -->
+    <div id="bow-container">
+
+        <svg id="bow" viewBox="0 0 100 200">
+
+            <path d="M 90 10 C 30 60, 30 140, 90 190"
+                  stroke="#8B4513"
+                  stroke-width="5"
+                  fill="none"/>
+
+            <line x1="90"
+                  y1="10"
+                  x2="90"
+                  y2="190"
+                  stroke="#D2B48C"
+                  stroke-width="2"/>
+
+        </svg>
+
+    </div>
+
+    <!-- Flecha -->
+    <div id="arrow">
+
+        <svg viewBox="0 0 100 20">
+
+            <line x1="0"
+                  y1="10"
+                  x2="90"
+                  y2="10"
+                  stroke="#A0522D"
+                  stroke-width="3"/>
+
+            <path d="M 85 5 L 95 10 L 85 15"
+                  stroke="#A0522D"
+                  stroke-width="3"
+                  fill="none"/>
+
+        </svg>
+
+    </div>
+
+    <!-- Botón reiniciar -->
+    <div id="controls-container"
+         class="absolute bottom-4 left-1/2 -translate-x-1/2 z-40">
+
+        <button id="restart-button"
+                class="px-6 py-3 bg-white/80 backdrop-blur-sm text-pink-500 font-semibold rounded-lg shadow-md hover:bg-white transition-all text-lg">
+
+            Jugar de Nuevo
+
+        </button>
+
+    </div>
+
+    <!-- Confeti -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
